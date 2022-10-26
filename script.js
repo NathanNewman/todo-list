@@ -9,7 +9,7 @@ for (let i = 0; i < savedTasks.length; i++){
     const newTask = document.createElement('li');
     const removeBtn = document.createElement('button');
     removeBtn.innerText = 'X';
-    newTask.innerText = savedTasks[i].task;
+    newTask.innerText = savedTasks[i].task.slice(0, -1);
     newTask.appendChild(removeBtn);
     newTask.isCompleted = savedTasks[i].isCompleted ? true : false;
     toDoList.appendChild(newTask);
