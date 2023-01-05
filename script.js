@@ -61,23 +61,40 @@ toDoList.addEventListener("click", function (e) {
 
 // adds autocomplete function to input text
 
-const taskArray = ["Dinner", "Laundry", "Lunch", "Mow", "Homework", "Study", "Breakfast", "Clean"];
+let inputValue = "";
+const taskArray = [
+  "Dinner",
+  "Laundry",
+  "Lunch",
+  "Mow",
+  "Homework",
+  "Study",
+  "Breakfast",
+  "Clean",
+];
 
 input.addEventListener("input", function (e) {
+  console.log(inputValue);
   const input = e.target;
   const text = input.value;
-
-  if (text.length > 0) {
-    let newText = "";
-    for (let task of taskArray) {
-      if (task.startsWith(text)) {
-        newText = task.slice(text.length, task.length);
+  console.log(text);
+  if (inputValue !== text) {
+    if (text.length > 0) {
+      let newText = "";
+      for (let task of taskArray) {
+        if (task.startsWith(text)) {
+          newText = task.slice(text.length, task.length);
+        }
       }
-    }
-    if (newText) {
-      completeText = text + newText;
-      input.value = completeText;
-      input.setSelectionRange(text.length, completeText.length);
+      if (newText) {
+        completeText = text + newText;
+        input.value = completeText;
+        inputValue = text;
+        console.log(
+          `Text: ${text}; New Text: ${newText}; Complete: ${completeText}`
+        );
+        input.setSelectionRange(text.length, completeText.length);
+      }
     }
   }
 });
