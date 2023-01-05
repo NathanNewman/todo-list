@@ -74,10 +74,8 @@ const taskArray = [
 ];
 
 input.addEventListener("input", function (e) {
-  console.log(inputValue);
   const input = e.target;
   const text = input.value;
-  console.log(text);
   if (inputValue !== text) {
     if (text.length > 0) {
       let newText = "";
@@ -90,9 +88,6 @@ input.addEventListener("input", function (e) {
         completeText = text + newText;
         input.value = completeText;
         inputValue = text;
-        console.log(
-          `Text: ${text}; New Text: ${newText}; Complete: ${completeText}`
-        );
         input.setSelectionRange(text.length, completeText.length);
       }
     }
